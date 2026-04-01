@@ -1,0 +1,183 @@
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 16px 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.auth-bg { position: absolute; inset: 0; pointer-events: none; }
+.auth-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.12;
+}
+.auth-orb-1 {
+  width: 500px; height: 500px;
+  background: var(--accent-green);
+  top: -100px; right: -100px;
+}
+.auth-orb-2 {
+  width: 300px; height: 300px;
+  background: var(--accent-gold);
+  bottom: -50px; left: -50px;
+  opacity: 0.07;
+}
+
+.auth-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-xl);
+  padding: 44px;
+  width: 100%;
+  max-width: 440px;
+  position: relative;
+  z-index: 1;
+  box-shadow: var(--shadow-lg);
+}
+.auth-card-wide { max-width: 560px; }
+
+.auth-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.1rem;
+  margin-bottom: 24px;
+}
+.auth-logo span {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--text-primary);
+  font-size: 1.1rem;
+}
+
+.auth-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  font-family: var(--font-display);
+}
+.auth-sub {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: 28px;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.input-error { border-color: rgba(239,68,68,0.6) !important; }
+
+.auth-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 20px 0;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+}
+.auth-divider::before, .auth-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border-subtle);
+}
+
+.auth-demo { margin-bottom: 20px; }
+
+.auth-switch {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  margin-top: 20px;
+}
+.auth-switch a { color: var(--accent-green); font-weight: 600; }
+.auth-switch a:hover { text-decoration: underline; }
+
+/* Registration steps */
+.reg-steps {
+  display: flex;
+  align-items: center;
+  margin-bottom: 28px;
+}
+.reg-step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+.reg-step.active { color: var(--text-primary); }
+.reg-step.done { color: var(--accent-green); }
+.reg-step-dot {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.78rem;
+  font-weight: 700;
+  border: 2px solid var(--border-subtle);
+  background: var(--bg-secondary);
+  flex-shrink: 0;
+}
+.reg-step.active .reg-step-dot {
+  border-color: var(--accent-green);
+  background: var(--accent-green-glow);
+  color: var(--accent-green);
+}
+.reg-step.done .reg-step-dot {
+  border-color: var(--accent-green);
+  background: var(--accent-green);
+  color: var(--bg-primary);
+}
+.reg-step-line { flex: 0 0 40px; height: 1px; background: var(--border-subtle); }
+
+/* Charity select grid */
+.charity-select-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 20px;
+}
+.charity-select-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 14px 16px;
+  background: var(--bg-secondary);
+  border: 1.5px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: left;
+  position: relative;
+}
+.charity-select-btn:hover { border-color: var(--border-medium); background: var(--bg-card-hover); }
+.charity-select-btn.selected { border-color: var(--accent-green); background: var(--accent-green-glow); }
+.charity-select-icon { font-size: 1.5rem; }
+.charity-select-name { font-size: 0.85rem; font-weight: 600; color: var(--text-primary); line-height: 1.3; }
+.charity-select-cat { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+.charity-select-check {
+  position: absolute;
+  top: 8px; right: 10px;
+  width: 20px; height: 20px;
+  background: var(--accent-green);
+  color: var(--bg-primary);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+@media (max-width: 480px) {
+  .auth-card { padding: 28px 20px; }
+  .charity-select-grid { grid-template-columns: 1fr; }
+}
