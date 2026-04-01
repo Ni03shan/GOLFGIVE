@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # ⛳ GolfGive — Golf Charity Subscription Platform
 
 **Play. Win. Give.**  
@@ -230,3 +231,6 @@ The platform uses a custom dark-forest design system:
 ---
 
 Built for **Digital Heroes** — Sample Assignment · March 2026
+=======
+# GOLFGIVE
+>>>>>>> 9d5c74eacc72dae46c736be7ab13b114c9db7def
