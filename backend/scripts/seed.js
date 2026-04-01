@@ -90,11 +90,10 @@ const seed = async () => {
     const createdCharities = await Charity.insertMany(CHARITIES);
     console.log(`✅ Created ${createdCharities.length} charities`);
 
-    // Create admin user
     const admin = await User.create({
       firstName: 'Admin',
       lastName: 'GolfGive',
-      email: 'admin@golfgive.com',
+      email: 'admin@golfgive',
       password: 'admin1234',
       role: 'admin',
       subscription: { status: 'active', plan: 'yearly' }
