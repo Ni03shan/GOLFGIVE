@@ -12,7 +12,7 @@
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "https://golfgive-hynq.onrender.com/api/$1"
+      "dest": "https://golfgive-12c8.onrender.com/api/$1"
     },
     {
       "src": "/(.*)",
@@ -20,6 +20,6 @@
     }
   ],
   "env": {
-  "REACT_APP_API_URL": "https://golfgive-hynq.onrender.com/api"
+  "REACT_APP_API_URL": "https://golfgive-12c8.onrender.com/api"
   }
 }
