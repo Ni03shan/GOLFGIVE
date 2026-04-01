@@ -17,20 +17,17 @@ app.use('/api/payments/webhook', express.raw({ type: 'application/json' }));
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
 
-// Routes
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/users', require('./routes/users'));
 app.use('/api/scores', require('./routes/scores'));
 app.use('/api/draws', require('./routes/draws'));
 app.use('/api/charities', require('./routes/charities'));
-app.use('/api/payments', require('./routes/payments'));
 app.use('/api/admin', require('./routes/admin'));
 
 app.get('/api/health', (req, res) => {
   res.json({ status: 'OK', timestamp: new Date().toISOString() });
 });
 
-// Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(err.statusCode || 500).json({
