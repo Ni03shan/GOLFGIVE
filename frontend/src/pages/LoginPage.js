@@ -28,19 +28,7 @@ export default function LoginPage() {
       toast.success(`Welcome back, ${user.firstName}! 👋`);
       navigate(user.role === 'admin' ? '/admin' : '/dashboard');
     } catch (err) {
-      // Show the REAL error — not a generic fallback
-      const msg =
-        err.response?.data?.message ||   // server returned a message (wrong password, etc.)
-        err.response?.data?.errors?.[0]?.msg || // validation errors
-        err.message ||                    // network error (our custom message from api.js)
-        'Login failed. Please try again.';
-
-      // Also log the full error for debugging
-      console.error('[Login] Error status:', err.response?.status);
-      console.error('[Login] Error data:', err.response?.data);
-      console.error('[Login] Full error:', err.message);
-
-      toast.error(msg, { autoClose: 6000 });
+      toast.error(err.response?.data?.message || 'Login failed. Check your credentials.');
     } finally {
       setLoading(false);
     }
@@ -62,16 +50,6 @@ export default function LoginPage() {
         <h1 className="auth-title">Welcome back</h1>
         <p className="auth-sub">Sign in to your account to continue</p>
 
-        {/* Backend URL debug indicator — remove after fixing */}
-        <div style={{
-          fontSize: '0.7rem', color: 'var(--text-muted)',
-          background: 'rgba(255,255,255,0.03)', border: '1px solid var(--border-subtle)',
-          borderRadius: '6px', padding: '6px 10px', marginBottom: '16px',
-          wordBreak: 'break-all'
-        }}>
-          API: {process.env.REACT_APP_API_URL || '(using /api proxy — local dev)'}
-        </div>
-
         <form onSubmit={handleSubmit} className="auth-form">
           <div className="form-group">
             <label className="form-label">Email Address</label>
@@ -90,15 +68,13 @@ export default function LoginPage() {
             {errors.password && <span className="form-error">{errors.password}</span>}
           </div>
           <button type="submit" className="btn btn-primary btn-full btn-lg" disabled={loading}>
-            {loading
-              ? <><span className="spinner" style={{width:18,height:18,borderWidth:2}}/>Signing in… (may take 30s if server is waking)</>
-              : 'Sign In'}
+            {loading ? <><span className="spinner" style={{width:18,height:18,borderWidth:2}}/>Signing in…</> : 'Sign In'}
           </button>
         </form>
 
         <div className="auth-divider"><span>or</span></div>
         <div className="auth-demo">
-          <p className="text-muted" style={{fontSize:'0.82rem',marginBottom:'10px'}}>Demo credentials (run seed script first):</p>
+          <p className="text-muted" style={{fontSize:'0.82rem',marginBottom:'10px'}}>Demo credentials:</p>
           <div style={{display:'flex',gap:'8px',flexWrap:'wrap'}}>
             <button className="btn btn-ghost btn-sm" onClick={() => setForm({email:'player@demo.com',password:'demo1234'})}>
               👤 Player Demo
