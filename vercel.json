@@ -4,22 +4,13 @@
     {
       "src": "frontend/package.json",
       "use": "@vercel/static-build",
-      "config": {
-        "distDir": "build"
-      }
+      "config": { "distDir": "build" }
     }
   ],
   "routes": [
     {
-      "src": "/api/(.*)",
-      "dest": "https://golfgive-12c8.onrender.com/api/$1"
-    },
-    {
       "src": "/(.*)",
       "dest": "/index.html"
     }
-  ],
-  "env": {
-  "REACT_APP_API_URL": "https://golfgive-12c8.onrender.com/api"
-  }
+  ]
 }
